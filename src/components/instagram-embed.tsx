@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
  * the script paints it.
  */
 export function InstagramEmbed({ permalink }: { permalink: string }) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLQuoteElement>(null);
 
   useEffect(() => {
     const id = "ig-embed-script";
