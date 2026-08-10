@@ -1,21 +1,22 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 export const Route = createFileRoute("/dev")({
   head: () => ({
     meta: [
-      { title: "Software Development — Sushant Demn" },
+      { title: "Sushant Payal — Software Developer (C++, C#, Full-Stack)" },
       {
         name: "description",
         content:
-          "Software developer portfolio. Real projects with problem, approach and result, plus tech stack and résumé. Looking for a full-time role.",
+          "IT engineering student and software developer in Pune. C++ audio engine, Unity multiplayer game, IoT full-stack dashboard. Résumé, stack and GitHub inside.",
       },
-      { property: "og:title", content: "Software Development — Sushant Demn" },
+      { property: "og:title", content: "Sushant Payal — Software Developer" },
       {
         property: "og:description",
         content:
-          "Software developer portfolio. Real projects, tech stack and résumé. Looking for a full-time role.",
+          "C++ audio engine, Unity + Photon multiplayer game, IoT full-stack dashboard. Hackathon runner-up. Open to full-time roles and internships.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -24,6 +25,8 @@ export const Route = createFileRoute("/dev")({
   component: DevTrack,
 });
 
+const EMAIL = "mail@sushantp.me";
+
 type Project = {
   name: string;
   tag: string;
@@ -31,47 +34,77 @@ type Project = {
   approach: string;
   result: string;
   stack: string[];
-  url: string;
+  url?: string;
   meta: string;
 };
 
 const projects: Project[] = [
   {
     name: "Sustify",
-    tag: "Local audio player",
-    meta: "C++17 / C++20 · 5★ on GitHub",
+    tag: "Hi-res desktop audio player",
+    meta: "C++ · Mar 2026",
     problem:
-      "Desktop audio players are bloated. Wanted something lightweight that still felt like a modern app, with proper metadata handling.",
+      "Desktop audio players are either bloated or ugly, and most mangle metadata. I wanted a lossless-capable player that stays tiny and still looks like a modern app.",
     approach:
-      "Built a C++ audio backend handling playback and queue management, paired with an OS-native WebView rendering an HTML/CSS/JS frontend — so the UI stays web-like but the binary stays tiny. Used TagLib to read ID3 tags (artist, title) straight from files, and a CMake + vcpkg pipeline that packages the executable, DLLs and GUI assets into one portable folder.",
+      "Built a low-latency audio engine on the Miniaudio API handling real-time state management, precise seeking and gapless continuous playback across FLAC, WAV and MP3. Bridged the native C++ backend to a web-based UI through WebView, with Portable File Dialogs for native cross-platform file selection, TagLib for live ID3 metadata parsing, and a linear queue structure for track sequencing.",
     result:
-      "A single, standalone, fast local player that reads real metadata and runs without an installer — a full C++ project shipped end-to-end.",
-    stack: ["C++17/20", "CMake", "vcpkg", "TagLib", "WebView", "HTML/CSS/JS"],
+      "A single portable executable that plays lossless audio, reads real metadata and needs no installer — a full C++ desktop app shipped end to end.",
+    stack: ["C++", "Miniaudio", "TagLib", "WebView", "CMake", "vcpkg"],
     url: "https://github.com/sushant-demn/Sustify",
   },
   {
-    name: "Pacman Hunt Protocol",
-    tag: "Multiplayer game",
-    meta: "C# · Game networking",
+    name: "Pacman: The Hunt Protocol",
+    tag: "2D multiplayer game",
+    meta: "C# · Unity · Apr 2026",
     problem:
-      "Wanted to learn real-time multiplayer networking, not just build a single-player game in a vacuum.",
+      "Single-player games hide the hard part. I wanted to actually solve real-time networking: two players, one authoritative game state, unreliable latency.",
     approach:
-      "Built a PacMan multiplayer game in C#, designing the client and the network protocol so multiple players share a live game state. Focus was on synchronising movement and game rules across clients without the whole thing falling apart under latency.",
+      "Built a Pacman-inspired 2D multiplayer game in Unity and C#, integrating Photon PUN for lobby handling and player state synchronisation. Wrote a grid-based movement system using BoxCast for precise collision and physics, scalable level architecture with Unity Tilemap, and responsive UI with real-time spatial tracking indicators for each avatar.",
     result:
-      "A working multiplayer PacMan with a hand-rolled protocol — a concrete exercise in real-time state sync, game architecture and C#.",
-    stack: ["C#", "Networking", "Game architecture", "Real-time sync"],
-    url: "https://github.com/sushant-demn/pacman-hunt-protocol",
+      "A playable networked game built under hackathon pressure — and Runner-Up out of 50+ national teams at Hacksprint v7.0.",
+    stack: ["C#", "Unity Engine", "Photon PUN", "Tilemap", "Physics"],
+    url: "https://github.com/sushant-demn",
+  },
+  {
+    name: "Residential Security System",
+    tag: "IoT + full-stack dashboard",
+    meta: "C++ · ReactJS · Node.js · Mar 2025",
+    problem:
+      "Off-the-shelf home security is subscription-locked and closed. I wanted a self-hosted system built from cheap hardware I already had.",
+    approach:
+      "Architected a dual-layer IoT system: Raspberry Pi as central server, Arduino UNO for sensor data acquisition. Added a real-time alert subsystem pushing instant notifications via the Telegram API on threat detection, a live surveillance feed from the Pi Camera Module plus old smartphones as remote cameras, and a full-stack Node.js + MySQL dashboard to visualise live sensor data and manage security logs.",
+    result:
+      "A working self-hosted security system with remote video, instant alerts and a web dashboard — hardware, backend and frontend all mine.",
+    stack: [
+      "C++",
+      "Arduino",
+      "Raspberry Pi",
+      "ESP32",
+      "Node.js",
+      "ReactJS",
+      "MySQL",
+    ],
   },
 ];
 
-const stack = [
-  "C / C++",
-  "C#",
-  "JavaScript / TypeScript",
-  "React",
-  "Python",
-  "CMake / vcpkg",
-  "Git",
+const stackGroups: { label: string; items: string[] }[] = [
+  { label: "Languages", items: ["C++", "C#", "JavaScript", "MySQL"] },
+  {
+    label: "Frameworks & Libraries",
+    items: ["ReactJS", "Node.js", "Photon PUN", "TagLib", "Miniaudio", "WebView"],
+  },
+  {
+    label: "Tools & Hardware",
+    items: [
+      "Unity Engine",
+      "Arduino",
+      "Raspberry Pi",
+      "ESP32",
+      "Ubuntu Server",
+      "Git / GitHub",
+      "Microsoft Azure",
+    ],
+  },
 ];
 
 function DevTrack() {
@@ -82,22 +115,39 @@ function DevTrack() {
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-6 pt-16 sm:pt-24">
         <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-          Track 02 — Software Development
+          Software Development — primary track
         </p>
         <h1 className="mt-5 max-w-3xl font-display text-[clamp(2.6rem,7vw,5.5rem)] leading-[0.98] text-foreground">
           I ship things that run.
         </h1>
-        <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground">
-          Software developer based in India, looking for a full-time role. I like
-          systems that are small, fast and actually finished — from a C++ audio
-          player to a multiplayer game with a hand-rolled protocol.
+        <p className="mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground">
+          Information Technology engineering student at IIIT, SPPU (Pune) and a
+          systems-leaning developer. I build things close to the metal and finish
+          them: a lossless C++ audio engine, a networked Unity game, an IoT
+          security system with its own dashboard. Open to full-time roles and
+          internships.
         </p>
+
+        <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-border pt-8 sm:grid-cols-4">
+          <Fact k="Based in" v="Pune, MH · India" />
+          <Fact k="Studying" v="B.E. Information Technology" />
+          <Fact k="GPA" v="7.8 / 10" />
+          <Fact k="Focus" v="Systems · C++ · Full-stack" />
+        </dl>
+
         <div className="mt-9 flex flex-wrap gap-3">
           <a
-            href="mailto:hello@sushantdemn.dev?subject=Résumé request — Sushant Demn"
+            href={resumeAsset.url}
+            download="Sushant_Payal_Resume.pdf"
             className="rounded-sm bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
-            Request résumé
+            Download résumé (PDF)
+          </a>
+          <a
+            href={`mailto:${EMAIL}?subject=Full-time role — Sushant Payal`}
+            className="rounded-sm border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-background"
+          >
+            Email me
           </a>
           <a
             href="https://github.com/sushant-demn"
@@ -130,20 +180,59 @@ function DevTrack() {
       {/* Stack */}
       <section className="mx-auto max-w-6xl px-6 pt-16">
         <div className="hairline" />
-        <div className="grid grid-cols-1 gap-8 py-10 md:grid-cols-[1fr_2fr]">
+        <div className="py-10">
           <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            Tech stack
+            Technical skills
           </p>
-          <ul className="flex flex-wrap gap-2.5">
-            {stack.map((s) => (
-              <li
-                key={s}
-                className="rounded-full border border-border px-4 py-1.5 text-sm text-foreground"
-              >
-                {s}
-              </li>
+          <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-3">
+            {stackGroups.map((g) => (
+              <div key={g.label}>
+                <p className="text-sm font-medium text-foreground">{g.label}</p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {g.items.map((s) => (
+                    <li
+                      key={s}
+                      className="rounded-full border border-border px-3.5 py-1.5 text-[13px] text-foreground"
+                    >
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Education & achievements */}
+      <section className="mx-auto max-w-6xl px-6">
+        <div className="hairline" />
+        <div className="grid grid-cols-1 gap-10 py-10 md:grid-cols-2">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              Education
+            </p>
+            <h3 className="mt-4 font-display text-2xl leading-snug text-foreground">
+              International Institute of Information Technology, SPPU
+            </h3>
+            <p className="mt-2 text-[15px] text-foreground">
+              B.E. Information Technology · 2023 – Present
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">GPA 7.8 / 10</p>
+          </div>
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              Achievements
+            </p>
+            <h3 className="mt-4 font-display text-2xl leading-snug text-foreground">
+              Runner-Up — Game X Innovate, Hacksprint v7.0
+            </h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+              Organised by MMCOE Karvenagar and Zensar Technologies. Built a 2D
+              multiplayer game in under 24 hours with Unity and Photon PUN —
+              placed Runner-Up out of 50+ teams at national level.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -152,26 +241,25 @@ function DevTrack() {
         <div className="hairline" />
         <div className="py-10">
           <h2 className="max-w-2xl font-display text-[clamp(2rem,5vw,3rem)] leading-[1.05] text-foreground">
-            Looking for a junior developer who finishes what they start?
+            Looking for a developer who finishes what they start?
           </h2>
           <p className="mt-4 max-w-lg text-base text-muted-foreground">
             Open to full-time roles and internships. I learn stacks quickly and
-            care about writing code I can defend.
+            care about writing code I can defend line by line.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <a
-              href="mailto:hello@sushantdemn.dev?subject=Full-time role — Sushant Demn"
+              href={`mailto:${EMAIL}?subject=Full-time role — Sushant Payal`}
               className="rounded-sm bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               Email me →
             </a>
             <a
-              href="https://github.com/sushant-demn"
-              target="_blank"
-              rel="noreferrer"
+              href={resumeAsset.url}
+              download="Sushant_Payal_Resume.pdf"
               className="rounded-sm border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-background"
             >
-              GitHub ↗
+              Download résumé
             </a>
             <Link
               to="/video"
@@ -188,6 +276,17 @@ function DevTrack() {
   );
 }
 
+function Fact({ k, v }: { k: string; v: string }) {
+  return (
+    <div>
+      <dt className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+        {k}
+      </dt>
+      <dd className="mt-1.5 text-[15px] leading-snug text-foreground">{v}</dd>
+    </div>
+  );
+}
+
 function ProjectRow({ project, index }: { project: Project; index: number }) {
   return (
     <div className="border-b border-border py-10 last:border-b-0">
@@ -196,21 +295,23 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
           <span className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
             0{index + 1}
           </span>
-          <h3 className="mt-3 font-display text-4xl text-foreground">
+          <h3 className="mt-3 font-display text-4xl leading-tight text-foreground">
             {project.name}
           </h3>
           <p className="mt-1 text-sm font-medium text-foreground">
             {project.tag}
           </p>
           <p className="mt-1 text-xs text-muted-foreground">{project.meta}</p>
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noreferrer"
-            className="ink-underline mt-5 inline-block pb-0.5 text-sm font-medium text-foreground"
-          >
-            View on GitHub ↗
-          </a>
+          {project.url ? (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              className="ink-underline mt-5 inline-block pb-0.5 text-sm font-medium text-foreground"
+            >
+              View on GitHub ↗
+            </a>
+          ) : null}
         </div>
         <div className="flex flex-col gap-5">
           <WriteUp label="Problem" text={project.problem} />

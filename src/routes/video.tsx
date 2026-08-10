@@ -7,13 +7,13 @@ import { InstagramEmbed } from "@/components/instagram-embed";
 export const Route = createFileRoute("/video")({
   head: () => ({
     meta: [
-      { title: "Video Editing — Sushant Demn" },
+      { title: "Video Editing — Sushant Payal" },
       {
         name: "description",
         content:
           "Freelance video editor. Showreels, social cuts and recent edits. Available for client work.",
       },
-      { property: "og:title", content: "Video Editing — Sushant Demn" },
+      { property: "og:title", content: "Video Editing — Sushant Payal" },
       {
         property: "og:description",
         content:
@@ -137,7 +137,7 @@ function ContactForm() {
   const [email, setEmail] = useState("");
   const [project, setProject] = useState("");
 
-  const href = `mailto:hello@sushantdemn.dev?subject=Video%20edit%20enquiry%20from%20${encodeURIComponent(
+  const href = `mailto:mail@sushantp.me?subject=Video%20edit%20enquiry%20from%20${encodeURIComponent(
     name || "a new client",
   )}&body=${encodeURIComponent(
     `Name: ${name}\nEmail: ${email}\n\nProject:\n${project}`,
@@ -202,9 +202,9 @@ function ContactForm() {
           Prefer email?{" "}
           <a
             className="ink-underline"
-            href="mailto:hello@sushantdemn.dev?subject=Video%20edit%20enquiry"
+            href="mailto:mail@sushantp.me?subject=Video%20edit%20enquiry"
           >
-            hello@sushantdemn.dev
+            mail@sushantp.me
           </a>
         </p>
       </form>
