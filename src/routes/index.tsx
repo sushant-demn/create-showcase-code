@@ -88,6 +88,7 @@ function ForkPanel({
   line,
   body,
   cta,
+  primary = false,
 }: {
   to: "/video" | "/dev";
   kind: "video" | "dev";
@@ -96,13 +97,17 @@ function ForkPanel({
   line: string;
   body: string;
   cta: string;
+  primary?: boolean;
 }) {
   const tint = kind === "video" ? "bg-track-video" : "bg-track-dev";
   return (
     <Link
       to={to}
       className={
-        "group relative flex min-h-[24rem] flex-col justify-between p-8 transition-colors sm:min-h-[30rem] sm:p-12 " +
+        "group relative flex flex-col justify-between p-8 transition-colors sm:p-12 " +
+        (primary
+          ? "min-h-[26rem] sm:min-h-[34rem] "
+          : "min-h-[20rem] sm:min-h-[26rem] ") +
         tint +
         " hover:bg-background"
       }
@@ -117,13 +122,21 @@ function ForkPanel({
       </div>
 
       <div className="mt-auto">
-        <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] leading-[1] text-foreground">
+        <h2
+          className={
+            "font-display leading-[1] text-foreground " +
+            (primary
+              ? "text-[clamp(2.4rem,6vw,4.25rem)]"
+              : "text-[clamp(1.8rem,4vw,2.6rem)]")
+          }
+        >
           {label}
         </h2>
         <p className="mt-3 text-sm font-medium text-foreground">{line}</p>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
           {body}
         </p>
+
         <p className="ink-underline mt-6 inline-block pb-0.5 text-[13px] font-medium text-foreground">
           {cta}
         </p>
