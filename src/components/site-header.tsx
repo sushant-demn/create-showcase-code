@@ -14,10 +14,10 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link to="/" className="group flex items-baseline gap-2">
           <span className="font-display text-xl leading-none tracking-tight text-foreground">
-            Sushant Demn
+            Sushant Payal
           </span>
           <span className="hidden text-[11px] uppercase tracking-[0.18em] text-muted-foreground sm:inline">
-            Editor & Developer
+            Developer & Editor
           </span>
         </Link>
         <nav className="flex items-center gap-1">
