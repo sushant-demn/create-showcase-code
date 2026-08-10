@@ -1,8 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 
 const links = [
-  { label: "Video", to: "/video" },
   { label: "Development", to: "/dev" },
+  { label: "Video", to: "/video" },
 ] as const;
 
 export function SiteHeader() {

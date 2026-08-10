@@ -11,22 +11,22 @@ export function SiteFooter() {
               Sushant Payal
             </p>
             <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-              Video editor for hire & software developer looking for a full-time
-              role. One person, two crafts, one place.
+              Software developer looking for a full-time role — and a video
+              editor for hire. One person, two crafts, one place.
             </p>
           </div>
           <div className="flex flex-col gap-1 text-sm sm:items-end">
-            <Link
-              to="/video"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Video Editing →
-            </Link>
             <Link
               to="/dev"
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
               Software Development →
+            </Link>
+            <Link
+              to="/video"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Video Editing →
             </Link>
             <a
               href="https://github.com/sushant-demn"
