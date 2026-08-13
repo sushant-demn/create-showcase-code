@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import resumeAsset from "@/assets/resume.pdf.asset.json";
+// import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 export const Route = createFileRoute("/dev")({
   head: () => ({
@@ -75,15 +75,7 @@ const projects: Project[] = [
       "Architected a dual-layer IoT system: Raspberry Pi as central server, Arduino UNO for sensor data acquisition. Added a real-time alert subsystem pushing instant notifications via the Telegram API on threat detection, a live surveillance feed from the Pi Camera Module plus old smartphones as remote cameras, and a full-stack Node.js + MySQL dashboard to visualise live sensor data and manage security logs.",
     result:
       "A working self-hosted security system with remote video, instant alerts and a web dashboard — hardware, backend and frontend all mine.",
-    stack: [
-      "C++",
-      "Arduino",
-      "Raspberry Pi",
-      "ESP32",
-      "Node.js",
-      "ReactJS",
-      "MySQL",
-    ],
+    stack: ["C++", "Arduino", "Raspberry Pi", "ESP32", "Node.js", "ReactJS", "MySQL"],
   },
 ];
 
@@ -121,11 +113,10 @@ function DevTrack() {
           I ship things that run.
         </h1>
         <p className="mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          Information Technology engineering student at IIIT, SPPU (Pune) and a
-          systems-leaning developer. I build things close to the metal and finish
-          them: a lossless C++ audio engine, a networked Unity game, an IoT
-          security system with its own dashboard. Open to full-time roles and
-          internships.
+          Information Technology engineering student at IIIT, SPPU (Pune) and a systems-leaning
+          developer. I build things close to the metal and finish them: a lossless C++ audio engine,
+          a networked Unity game, an IoT security system with its own dashboard. Open to full-time
+          roles and internships.
         </p>
 
         <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-border pt-8 sm:grid-cols-4">
@@ -137,7 +128,7 @@ function DevTrack() {
 
         <div className="mt-9 flex flex-wrap gap-3">
           <a
-            href={resumeAsset.url}
+            href="/Resume_Sushant_Payal.pdf"
             download="Sushant_Payal_Resume.pdf"
             className="rounded-sm bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
@@ -228,9 +219,9 @@ function DevTrack() {
               Runner-Up — Game X Innovate, Hacksprint v7.0
             </h3>
             <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
-              Organised by MMCOE Karvenagar and Zensar Technologies. Built a 2D
-              multiplayer game in under 24 hours with Unity and Photon PUN —
-              placed Runner-Up out of 50+ teams at national level.
+              Organised by MMCOE Karvenagar and Zensar Technologies. Built a 2D multiplayer game in
+              under 24 hours with Unity and Photon PUN — placed Runner-Up out of 50+ teams at
+              national level.
             </p>
           </div>
         </div>
@@ -244,8 +235,8 @@ function DevTrack() {
             Looking for a developer who finishes what they start?
           </h2>
           <p className="mt-4 max-w-lg text-base text-muted-foreground">
-            Open to full-time roles and internships. I learn stacks quickly and
-            care about writing code I can defend line by line.
+            Open to full-time roles and internships. I learn stacks quickly and care about writing
+            code I can defend line by line.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <a
@@ -255,7 +246,7 @@ function DevTrack() {
               Email me →
             </a>
             <a
-              href={resumeAsset.url}
+              href="/Resume_Sushant_Payal.pdf"
               download="Sushant_Payal_Resume.pdf"
               className="rounded-sm border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-background"
             >
@@ -279,9 +270,7 @@ function DevTrack() {
 function Fact({ k, v }: { k: string; v: string }) {
   return (
     <div>
-      <dt className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-        {k}
-      </dt>
+      <dt className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{k}</dt>
       <dd className="mt-1.5 text-[15px] leading-snug text-foreground">{v}</dd>
     </div>
   );
@@ -298,9 +287,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
           <h3 className="mt-3 font-display text-4xl leading-tight text-foreground">
             {project.name}
           </h3>
-          <p className="mt-1 text-sm font-medium text-foreground">
-            {project.tag}
-          </p>
+          <p className="mt-1 text-sm font-medium text-foreground">{project.tag}</p>
           <p className="mt-1 text-xs text-muted-foreground">{project.meta}</p>
           {project.url ? (
             <a
@@ -336,9 +323,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
 function WriteUp({ label, text }: { label: string; text: string }) {
   return (
     <div>
-      <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-        {label}
-      </p>
+      <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{label}</p>
       <p className="mt-1.5 text-[15px] leading-relaxed text-foreground">{text}</p>
     </div>
   );
